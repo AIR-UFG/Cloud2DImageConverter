@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "Cloud2DImageConverter"
+  site-url: "https://alunos-pfc.github.io/Cloud2DImageConverter"
+  description: "Repositório oficial de conversão das point clouds para as imagens 2d."
+  repo-branch: main
+  repo-url: "https://github.com/alunos-pfc/Cloud2DImageConverter"
