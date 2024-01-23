@@ -5,4 +5,12 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://alunos-pfc.github.io',
                 'git_url': 'https://github.com/alunos-pfc/Cloud2DImageConverter',
                 'lib_path': 'Cloud2DImageConverter'},
-  'syms': {'Cloud2DImageConverter.core': {'Cloud2DImageConverter.core.foo': ('core.html#foo', 'Cloud2DImageConverter/core.py')}}}
+  'syms': { 'Cloud2DImageConverter.core': {'Cloud2DImageConverter.core.foo': ('core.html#foo', 'Cloud2DImageConverter/core.py')},
+            'Cloud2DImageConverter.data': { 'Cloud2DImageConverter.data.load_data': ( 'data.html#load_data',
+                                                                                      'Cloud2DImageConverter/data.py')},
+            'Cloud2DImageConverter.spherical_projections': { 'Cloud2DImageConverter.spherical_projections.create_ImageMatrix': ( 'spherical_projections.html#create_imagematrix',
+                                                                                                                                 'Cloud2DImageConverter/spherical_projections.py'),
+                                                             'Cloud2DImageConverter.spherical_projections.spherical_projection_1': ( 'spherical_projections.html#spherical_projection_1',
+                                                                                                                                     'Cloud2DImageConverter/spherical_projections.py'),
+                                                             'Cloud2DImageConverter.spherical_projections.spherical_projection_2': ( 'spherical_projections.html#spherical_projection_2',
+                                                                                                                                     'Cloud2DImageConverter/spherical_projections.py')}}}
