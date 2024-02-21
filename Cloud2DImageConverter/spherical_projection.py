@@ -10,7 +10,7 @@ from . import data
 import matplotlib.pyplot as plt
 import numpy as np
 
-# %% ../nbs/01_spherical_projections.ipynb 6
+# %% ../nbs/01_spherical_projections.ipynb 5
 color_map = dict(data.color_map)
 
 # %% ../nbs/01_spherical_projections.ipynb 7
@@ -53,6 +53,7 @@ def spherical_projection(point_cloud, proj_fov_up=3.0, proj_fov_down=-25.0, proj
     # setup the image matrix 
     image_matrix_no_label = np.zeros((proj_H, proj_W))
     image_matrix_with_label = np.zeros((proj_H, proj_W))
+    image_matrix_depth = np.zeros((proj_H, proj_W))
 
     # reflectance matrix
     for x, y, i in zip(proj_x, proj_y, reflec):
@@ -62,9 +63,13 @@ def spherical_projection(point_cloud, proj_fov_up=3.0, proj_fov_down=-25.0, proj
     for x, y, i in zip(proj_x, proj_y, labels):
         image_matrix_with_label[y, x] = i
 
-    return image_matrix_no_label, image_matrix_with_label
+    # depth matrix
+    for x, y, i in zip(proj_x, proj_y, R):
+        image_matrix_depth[y, x] = i
 
-# %% ../nbs/01_spherical_projections.ipynb 26
+    return image_matrix_no_label, image_matrix_with_label, image_matrix_depth
+
+# %% ../nbs/01_spherical_projections.ipynb 8
 '''
 - Substitui as keys da matriz de label pela respectiva cor do dicionário color_map
 - Retorna a matriz de label no formato (64, 1024, 3)

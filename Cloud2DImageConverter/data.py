@@ -19,26 +19,20 @@ learning_map = data.get('learning_map', {})
 color_map = data.get('color_map', {})
 
 # %% ../nbs/00_data.ipynb 7
-def load_data(sequence_path):
-    velodyne_path = os.path.join(sequence_path, 'velodyne')
-    labels_path = os.path.join(sequence_path, 'labels')
-
-    frames = []
-    for frame_name in sorted(os.listdir(velodyne_path)):
-        frame_path = os.path.join(velodyne_path, frame_name)
-        with open(frame_path, 'rb') as f:
-            frames.append(np.fromfile(f, dtype=np.float32).reshape(-1, 4))
-
-    labels = []
-    for label_name in sorted(os.listdir(labels_path)):
-        label_path = os.path.join(labels_path, label_name)
-        with open(label_path, 'rb') as f:
-            np_label = np.fromfile(f, dtype=np.uint32)
-            np_label = np_label & 0xFFFF
-            labels.append(np_label)
-
+def load_data(velodyne_path, labels_path, velodyne_list, label_list):
+    #import pdb
     point_cloud = []
-    for frame, label in zip(frames,labels):
+    for index in (range(len(velodyne_list))):
+        #pdb.set_trace()
+        frame_path = os.path.join(velodyne_path, velodyne_list[index])
+        with open(frame_path, 'rb') as f:
+            frame = np.fromfile(f, dtype=np.float32).reshape(-1, 4)
+
+        label_path = os.path.join(labels_path, label_list[index])
+        with open(label_path, 'rb') as f:
+            label = np.fromfile(f, dtype=np.uint32)
+            label = label & 0xFFFF
+            
         point_cloud.append(np.concatenate((frame, label.reshape(-1, 1)), axis=1))
-    
+        
     return point_cloud

@@ -11,12 +11,4 @@ d = { 'settings': { 'branch': 'main',
             'Cloud2DImageConverter.spherical_projection': { 'Cloud2DImageConverter.spherical_projection.colored_matrix_with_label': ( 'spherical_projections.html#colored_matrix_with_label',
                                                                                                                                       'Cloud2DImageConverter/spherical_projection.py'),
                                                             'Cloud2DImageConverter.spherical_projection.spherical_projection': ( 'spherical_projections.html#spherical_projection',
-                                                                                                                                 'Cloud2DImageConverter/spherical_projection.py')},
-            'Cloud2DImageConverter.spherical_projections': { 'Cloud2DImageConverter.spherical_projections.colored_matrix_with_label': ( 'spherical_projections.html#colored_matrix_with_label',
-                                                                                                                                        'Cloud2DImageConverter/spherical_projections.py'),
-                                                             'Cloud2DImageConverter.spherical_projections.create_ImageMatrix': ( 'spherical_projections.html#create_imagematrix',
-                                                                                                                                 'Cloud2DImageConverter/spherical_projections.py'),
-                                                             'Cloud2DImageConverter.spherical_projections.spherical_projection_1': ( 'spherical_projections.html#spherical_projection_1',
-                                                                                                                                     'Cloud2DImageConverter/spherical_projections.py'),
-                                                             'Cloud2DImageConverter.spherical_projections.spherical_projection_2': ( 'spherical_projections.html#spherical_projection_2',
-                                                                                                                                     'Cloud2DImageConverter/spherical_projections.py')}}}
+                                                                                                                                 'Cloud2DImageConverter/spherical_projection.py')}}}
