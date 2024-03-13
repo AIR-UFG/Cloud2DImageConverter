@@ -14,7 +14,9 @@ import numpy as np
 color_map = dict(data.color_map)
 
 # %% ../nbs/01_spherical_projections.ipynb 7
-def spherical_projection(point_cloud, proj_fov_up=3.0, proj_fov_down=-25.0, proj_W=1024, proj_H=64):
+def spherical_projection(point_cloud, proj_fov_up, proj_fov_down, proj_W, proj_H):
+    label_check = False
+    
     # laser parameters
     fov_up = proj_fov_up / 180.0 * np.pi      # field of view up in rad
     fov_down = proj_fov_down / 180.0 * np.pi  # field of view down in rad
@@ -25,7 +27,10 @@ def spherical_projection(point_cloud, proj_fov_up=3.0, proj_fov_down=-25.0, proj
     scan_y = point_cloud[:, 1]
     scan_z = point_cloud[:, 2]
     reflec = point_cloud[:, 3]
-    labels = point_cloud[:, 4]
+
+    if point_cloud.shape[-1] == 5:
+        labels = point_cloud[:, 4]
+        label_check = True
 
     R = np.sqrt(scan_x**2 + scan_y**2 + scan_z**2)
     
@@ -51,23 +56,24 @@ def spherical_projection(point_cloud, proj_fov_up=3.0, proj_fov_down=-25.0, proj
     proj_y = np.maximum(0, proj_y).astype(np.int32)   # in [0,H-1]
 
     # setup the image matrix 
-    image_matrix_no_label = np.zeros((proj_H, proj_W))
-    image_matrix_with_label = np.zeros((proj_H, proj_W))
+    image_matrix_reflectance = np.zeros((proj_H, proj_W))
     image_matrix_depth = np.zeros((proj_H, proj_W))
-
+    image_matrix_mask = np.zeros((proj_H, proj_W))
+    
     # reflectance matrix
     for x, y, i in zip(proj_x, proj_y, reflec):
-        image_matrix_no_label[y, x] = i
-
-    # labels matrix
-    for x, y, i in zip(proj_x, proj_y, labels):
-        image_matrix_with_label[y, x] = i
+        image_matrix_reflectance[y, x] = i
 
     # depth matrix
     for x, y, i in zip(proj_x, proj_y, R):
         image_matrix_depth[y, x] = i
-
-    return image_matrix_no_label, image_matrix_with_label, image_matrix_depth
+        
+    # labels matrix
+    if label_check:
+        for x, y, i in zip(proj_x, proj_y, labels):
+            image_matrix_mask[y, x] = i
+    
+    return image_matrix_reflectance, image_matrix_depth, image_matrix_mask
 
 # %% ../nbs/01_spherical_projections.ipynb 8
 '''
@@ -75,7 +81,6 @@ def spherical_projection(point_cloud, proj_fov_up=3.0, proj_fov_down=-25.0, proj
 - Retorna a matriz de label no formato (64, 1024, 3)
 '''
 def colored_matrix_with_label(image_matrix_with_label):
-    
     colored_matrix =  np.empty(image_matrix_with_label.shape + (3,), dtype=np.uint8)
     
     for key, value in color_map.items():
