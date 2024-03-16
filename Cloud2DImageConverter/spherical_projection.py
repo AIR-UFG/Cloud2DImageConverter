@@ -3,24 +3,22 @@
 # %% auto 0
 __all__ = ['color_map', 'spherical_projection', 'colored_matrix_with_label']
 
-# %% ../nbs/01_spherical_projections.ipynb 3
+# %% ../nbs/01_spherical_projections.ipynb 2
 from . import data
-
-# %% ../nbs/01_spherical_projections.ipynb 4
 import matplotlib.pyplot as plt
 import numpy as np
 
-# %% ../nbs/01_spherical_projections.ipynb 5
+# %% ../nbs/01_spherical_projections.ipynb 3
 color_map = dict(data.color_map)
 
-# %% ../nbs/01_spherical_projections.ipynb 7
+# %% ../nbs/01_spherical_projections.ipynb 5
 def spherical_projection(point_cloud, proj_fov_up, proj_fov_down, proj_W, proj_H):
     label_check = False
     
     # laser parameters
     fov_up = proj_fov_up / 180.0 * np.pi      # field of view up in rad
     fov_down = proj_fov_down / 180.0 * np.pi  # field of view down in rad
-    fov = abs(fov_down) + abs(fov_up)  # get field of view total in rad
+    fov = abs(fov_down) + abs(fov_up)         # get field of view total in rad
 
     # get point_cloud components
     scan_x = point_cloud[:, 0]
@@ -75,11 +73,7 @@ def spherical_projection(point_cloud, proj_fov_up, proj_fov_down, proj_W, proj_H
     
     return image_matrix_reflectance, image_matrix_depth, image_matrix_mask
 
-# %% ../nbs/01_spherical_projections.ipynb 8
-'''
-- Substitui as keys da matriz de label pela respectiva cor do dicionário color_map
-- Retorna a matriz de label no formato (64, 1024, 3)
-'''
+# %% ../nbs/01_spherical_projections.ipynb 6
 def colored_matrix_with_label(image_matrix_with_label):
     colored_matrix =  np.empty(image_matrix_with_label.shape + (3,), dtype=np.uint8)
     
