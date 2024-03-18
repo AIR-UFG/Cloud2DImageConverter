@@ -3,13 +3,13 @@
 # %% auto 0
 __all__ = ['folder_path', 'label_map', 'learning_map', 'learning_map_inv', 'color_map', 'load_data', 'load_all_data']
 
-# %% ../nbs/00_data.ipynb 3
+# %% ../nbs/00_data.ipynb 2
 import numpy as np
 import yaml
 import os
 
-# %% ../nbs/00_data.ipynb 5
-folder_path = "../point_clouds/semantic_kitti/"
+# %% ../nbs/00_data.ipynb 4
+folder_path = "point_clouds/semantic_kitti/"
 
 with open(folder_path+"semantic-kitti.yaml", 'r') as file:
     data = yaml.safe_load(file)
@@ -19,11 +19,10 @@ learning_map = data.get('learning_map', {})
 learning_map_inv = data.get('learning_map_inv', {})
 color_map = data.get('color_map', {})
 
-# %% ../nbs/00_data.ipynb 7
+# %% ../nbs/00_data.ipynb 6
 def load_data(velodyne_path, velodyne_list, labels_path=None, label_list=None):
     point_cloud = []
     for index in (range(len(velodyne_list))):
-        #pdb.set_trace()
         frame_path = os.path.join(velodyne_path, velodyne_list[index])
         with open(frame_path, 'rb') as f:
             frame = np.fromfile(f, dtype=np.float32).reshape(-1, 4)
