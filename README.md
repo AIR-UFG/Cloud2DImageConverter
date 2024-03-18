@@ -5,15 +5,9 @@
 This repository aims to transform point clouds from the Semantic KITTI
 dataset into 2D images using spherical projections.
 
-## Install
+## Installing
 
-First, install nbdev.
-
-``` sh
-pip install nbdev
-```
-
-Now, clone the repository.
+First, clone the repository.
 
 ``` sh
 git clone https://github.com/alunos-pfc/Cloud2DImageConverter.git
@@ -25,13 +19,7 @@ Enter the cloned repository.
 cd Cloud2DImageConverter
 ```
 
-Create the package.
-
-``` sh
-nbdev export
-```
-
-Lastly, install the modules.
+Install the packeges.
 
 ``` sh
 pip install -e '.[dev]'
@@ -39,19 +27,7 @@ pip install -e '.[dev]'
 
 ## How to use
 
-Initialize jupyter lab, and run the **00_data** and the
-**01_spherical_projections** notebooks.
-
-Now, use the **02_image_generator** notebook to generate the images. For
-this, you’ll need to adjust the following hyperparameters:
-
-- FOLDER_PATH: The path to the sequences, for example,
-  “../point_clouds/semantic_kitti/”. The script will look for the
-  *velodyne* and *labels* folder, as in the Semantic KITTI format.
-- batch_size: The number of images that will be loaded in each
-  iteration. For 16GB of RAM, aim for a size around 500.
-
-An output folder will be created at *Cloud2DImageConverter/results*,
-containing the reflectance, depth, and label images. It’s important to
-note that this folder will be removed and recreated each time you run
-the script, so remember to save your images.
+Acces the jupyter and follow the steps outlined in the [Running
+Notebook](../Running.ipynb). If you preffer to use it on Google Colab,
+follow this [Colab
+Notebook](https://colab.research.google.com/drive/1jdMYCYVA_Vkrkh8uYYqcPDdeqvaFjZgE?usp=sharing)
