@@ -28,6 +28,6 @@ pip install -e '.[dev]'
 ## How to use
 
 Acces the jupyter and follow the steps outlined in the [Running
-Notebook](../Running.ipynb). If you preffer to use it on Google Colab,
+Notebook](/Running.ipynb). If you preffer to use it on Google Colab,
 follow this [Colab
 Notebook](https://colab.research.google.com/drive/1jdMYCYVA_Vkrkh8uYYqcPDdeqvaFjZgE?usp=sharing)
