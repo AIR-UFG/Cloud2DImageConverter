@@ -6,6 +6,7 @@ __all__ = ['spherical_projection']
 # %% ../nbs/01_spherical_projections.ipynb 2
 import numpy as np
 
+# %% ../nbs/01_spherical_projections.ipynb 3
 def spherical_projection(point_cloud, proj_fov_up, proj_fov_down, proj_W, proj_H):
     label_check = False
     
