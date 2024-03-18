@@ -6,13 +6,9 @@ __all__ = ['define_range', 'do_projection', 'save_image', 'create_images']
 # %% ../nbs/02_image_generator.ipynb 2
 from . import spherical_projection as sp
 from . import data
-from matplotlib import pyplot as plt
 from tqdm import tqdm
 from PIL import Image
 import numpy as np
-import pickle 
-import shutil
-import time
 import os
 
 # %% ../nbs/02_image_generator.ipynb 3

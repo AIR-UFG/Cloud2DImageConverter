@@ -9,7 +9,7 @@ import yaml
 import os
 
 # %% ../nbs/00_data.ipynb 4
-folder_path = "../point_clouds/semantic_kitti/"
+folder_path = "point_clouds/semantic_kitti/"
 
 with open(folder_path+"semantic-kitti.yaml", 'r') as file:
     data = yaml.safe_load(file)

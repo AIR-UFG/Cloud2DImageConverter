@@ -24,7 +24,8 @@ def run(data_path, results_path, batch_size=500, fov_up=3.0, fov_down=-25.0, wid
     os.makedirs(results_path)
     os.makedirs(results_path+"reflectance")
     os.makedirs(results_path+"depth")
-    os.makedirs(results_path+"segmentation_mask")
+    if is_label:
+        os.makedirs(results_path+"segmentation_mask")
 
     for batch in tqdm(range(batch_size, max_len, batch_size), desc="Batch:"):
         start, end = ig.define_range(batch, batch_size, max_len)
