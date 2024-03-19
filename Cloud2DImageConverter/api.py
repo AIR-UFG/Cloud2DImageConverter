@@ -20,12 +20,14 @@ def run(data_path, results_path, batch_size=500, fov_up=3.0, fov_down=-25.0, wid
     if batch_size > max_len: 
         batch_size = max_len-1
 
-    if os.path.exists(results_path): shutil.rmtree(results_path)
-    os.makedirs(results_path)
-    os.makedirs(results_path+"reflectance")
-    os.makedirs(results_path+"depth")
-    if is_label:
-        os.makedirs(results_path+"segmentation_mask")
+    #if os.path.exists(results_path): shutil.rmtree(results_path)
+    if not os.path.exists(results_path): 
+        os.makedirs(results_path)
+        os.makedirs(results_path+"reflectance")
+        os.makedirs(results_path+"depth")
+        if is_label:
+            os.makedirs(results_path+"segmentation_mask")
+        print(f"folder created at {results_path}")
 
     for batch in tqdm(range(batch_size, max_len, batch_size), desc="Batch:"):
         start, end = ig.define_range(batch, batch_size, max_len)
