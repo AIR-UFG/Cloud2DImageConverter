@@ -9,6 +9,8 @@ import numpy as np
 # %% ../nbs/01_spherical_projections.ipynb 3
 def spherical_projection(point_cloud, proj_fov_up, proj_fov_down, proj_W, proj_H):
     label_check = False
+
+    point_cloud = point_cloud[~np.isnan(point_cloud).any(axis=1)]
     
     # laser parameters
     fov_up = proj_fov_up / 180.0 * np.pi      # field of view up in rad
