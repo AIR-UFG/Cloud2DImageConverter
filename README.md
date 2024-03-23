@@ -27,6 +27,7 @@ pip install -e '.[dev]'
 
 ## How to use
 
-Access the jupyter notebook and follow the steps outlined in the
-[Running Notebook](/Running.ipynb). If you prefer to use it on Google
-Colab, follow this [Colab Notebook](https://colab.research.google.com/drive/1jdMYCYVA_Vkrkh8uYYqcPDdeqvaFjZgE?usp=sharing)
+Access the tutorials folder and follow the steps outlined in the
+[Spherical Projection Notebook](/tutorials/Spherical_Projection.ipynb).
+If you prefer to use it on Google Colab, follow this [Colab
+Notebook](https://colab.research.google.com/drive/1jdMYCYVA_Vkrkh8uYYqcPDdeqvaFjZgE?usp=sharing).
