@@ -9,7 +9,8 @@ import yaml
 import os
 
 # %% ../nbs/00_data.ipynb 5
-folder_path = "../point_clouds/semantic_kitti/"
+# folder_path = "../point_clouds/semantic_kitti/"
+folder_path = "../point_clouds/carro/"
 
 with open(folder_path+"semantic-kitti.yaml", 'r') as file:
     data = yaml.safe_load(file)
@@ -42,7 +43,8 @@ def load_data(velodyne_path, velodyne_list, labels_path=None, label_list=None):
 # %% ../nbs/00_data.ipynb 8
 def load_all_data(sequence_path):
     velodyne_path = os.path.join(sequence_path, 'velodyne')
-    labels_path = os.path.join(sequence_path, 'labels')
+    # labels_path = os.path.join(sequence_path, 'labels')
+    labels_path = None
 
     frames = []
     for frame_name in sorted(os.listdir(velodyne_path)):

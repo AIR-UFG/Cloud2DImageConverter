@@ -22,6 +22,9 @@ def spherical_projection(point_cloud, proj_fov_up, proj_fov_down, proj_W, proj_H
     fov_down = proj_fov_down / 180.0 * np.pi  # field of view down in rad
     fov = abs(fov_down) + abs(fov_up)  # get field of view total in rad
 
+    # Remover pontos com NaN antes de processar
+    point_cloud = point_cloud[~np.isnan(point_cloud).any(axis=1)]
+
     # get point_cloud components
     scan_x = point_cloud[:, 0]
     scan_y = point_cloud[:, 1]

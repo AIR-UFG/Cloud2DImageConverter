@@ -17,16 +17,22 @@ import time
 import os
 
 # %% ../nbs/02_image_generator.ipynb 4
-FOV_UP = 3.0
-FOV_DOWN = -25.0
+# FOV_UP = 3.0
+# FOV_DOWN = -25.0
+# WIDTH = 1024
+# HEIGHT = 64
+FOV_UP = 15
+FOV_DOWN = -15
 WIDTH = 1024
-HEIGHT = 64
+HEIGHT = 16
 
 # %% ../nbs/02_image_generator.ipynb 6
-FOLDER_PATH = "../point_clouds/semantic_kitti/"
+# FOLDER_PATH = "../point_clouds/semantic_kitti/"
+FOLDER_PATH = "../point_clouds/carro/"
 VELODYNE_PATH = FOLDER_PATH+"velodyne"
-LABEL_PATH = FOLDER_PATH+"labels"
-RESULTS_FOLDER =  "../results/"
+# LABEL_PATH = FOLDER_PATH+"labels"
+LABEL_PATH = None
+RESULTS_FOLDER =  "../results_carro/"
 
 BATCH_SIZE = 500
 MAX_LEN = len(os.listdir(VELODYNE_PATH))
@@ -81,7 +87,8 @@ def create_images(projection_dict):
             else:
                 matrix = sp.colored_matrix_with_label(matrix)
             aux_dict[key] = matrix
-        black_matrix = np.zeros((64, 1024), dtype=np.uint8)
+        # black_matrix = np.zeros((64, 1024), dtype=np.uint8)
+        black_matrix = np.zeros((16, 1024), dtype=np.uint8)
         aux_dict["final_matrix"] = np.dstack((np.array(aux_dict["reflectance"]), np.array(aux_dict["depth"]), black_matrix))
         save_image(aux_dict["final_matrix"], "/projections")
         save_image(aux_dict["label"], "/labels")
