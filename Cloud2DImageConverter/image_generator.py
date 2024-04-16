@@ -35,7 +35,7 @@ def do_projection(point_cloud, fov_up, fov_down, width, height, is_label):
 # %% ../nbs/02_image_generator.ipynb 5
 def save_image(matrix, results_folder, save_path):
     img = Image.fromarray(matrix)
-    final_path = os.path.join(results_folder+save_path)
+    final_path = results_folder+save_path
     file_number = len(os.listdir(final_path)) + 1
     file_name = f"{final_path}/{file_number:06d}.png"
     img.save(file_name)
